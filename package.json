@@ -11,6 +11,9 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "bootstrap": "^4.5.0",
+    "fontawesome": "^5.6.3",
+    "mockjs": "^1.1.0",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1"
   },
