@@ -23,11 +23,10 @@
         components: {SidebarItem},
 
         data() {
-            var routerObj = this.$router.getAdminLeftRouter();
             return {
                 isCollapse: false,
-                basePath: routerObj.basePath,
-                routes: routerObj.routes
+                basePath: "/admin",
+                routes: this.$router.getChildren("/admin")
             }
         },
         methods: {

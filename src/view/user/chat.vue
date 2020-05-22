@@ -8,7 +8,7 @@
             </div>
             <ul class="user-list">
                 <li v-for="item in userList" :key="item.id" :class="{ active: false }" @click="select(item)">
-                    <img class="avatar" width="30" height="30" :alt="item.name" src="@/assets/images/2.png">
+                    <img class="avatar" width="30" height="30" :alt="item.name" src="@/assets/images/3.jpg">
                     <p class="name">{{item.name}}</p>
                 </li>
             </ul>

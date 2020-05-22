@@ -3,15 +3,16 @@
         <el-submenu v-if="item.children && item.children.length>0" :index="resolvePath(item.path)">
             <template slot="title">
                 <i :class="item.icon"></i>
-                <span slot="title">{{item.name}}</span>
+                <span slot="title">{{$t('router.'+item.name)}}</span>
             </template>
             <el-menu-item-group>
-                <sidebar-item v-for="(route,index) in item.children" :key="index" :item="route" :basePath="resolvePath(item.path)"></sidebar-item>
+                <sidebar-item v-for="(route,index) in item.children" :key="index" :item="route"
+                              :basePath="resolvePath(item.path)"></sidebar-item>
             </el-menu-item-group>
         </el-submenu>
         <el-menu-item v-else :index="resolvePath(item.path)">
             <i :class="item.icon"></i>
-            <span slot="title">{{item.name}}</span>
+            <span slot="title">{{$t('router.'+item.name)}}</span>
         </el-menu-item>
     </div>
 </template>
@@ -44,7 +45,7 @@
     .el-menu-item {
         color: inherit;
 
-        &:focus,&:hover {
+        &:focus, &:hover {
             background-color: #001528;
         }
 

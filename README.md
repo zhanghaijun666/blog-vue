@@ -1,5 +1,6 @@
 
 ## 技术栈
+- [vue 常用知识](https://www.kancloud.cn/jackye/wendang/718665)
 - [vue](https://cn.vuejs.org/v2/guide/)
 - [Vue CLI](https://cli.vuejs.org/config/)
 - [vue-router](https://router.vuejs.org/)
