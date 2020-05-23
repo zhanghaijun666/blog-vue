@@ -18,9 +18,13 @@
             <el-table-column prop="birthday" :label="$t('user.birthday')"></el-table-column>
             <el-table-column fixed="right" :label="$t('common.operate')" width="120">
                 <template slot-scope="scope">
-                    <el-button type="text" size="small">{{$t('common.info')}}</el-button>
-                    <el-button @click="deleteSingleUser(scope.row)" type="text" size="small">{{$t('common.delete')}}
+                    <el-button type="text" size="small" @click="showUserDetail(scope.row)">
+                        {{$t('common.info')}}
                     </el-button>
+                    <el-popconfirm :title="scope.row.userName+','+$t('tip.confirmDelete')"
+                                   @onConfirm="deleteSingleUser(scope.row)">
+                        <el-button slot="reference" type="text" size="small">{{$t('common.delete')}}</el-button>
+                    </el-popconfirm>
                 </template>
             </el-table-column>
         </el-table>
@@ -34,6 +38,27 @@
                 :current-page="currentPage"
                 :total="userTableData.length">
         </el-pagination>
+        <el-drawer :visible.sync="showUserInfo" direction="rtl" :with-header="false" size="30%">
+            <el-form :model="userItem" label-width="80px" class="user-info-drawer">
+                <el-form-item :label="$t('user.userName')" required>
+                    <el-input v-model="userItem.userName" size="small"></el-input>
+                </el-form-item>
+                <el-form-item :label="$t('user.nickname')" required>
+                    <el-input v-model="userItem.nickname" size="small"></el-input>
+                </el-form-item>
+                <el-form-item :label="$t('user.birthday')">
+                    <el-date-picker type="date" :placeholder="$t('user.birthday')"
+                                    v-model="userItem.birthday"></el-date-picker>
+                </el-form-item>
+                <el-form-item :label="$t('user.motto')">
+                    <el-input type="textarea" v-model="userItem.motto"></el-input>
+                </el-form-item>
+                <el-form-item>
+                    <el-button @click="showUserInfo=false">关闭</el-button>
+                    <el-button type="primary">确定</el-button>
+                </el-form-item>
+            </el-form>
+        </el-drawer>
     </div>
 </template>
 
@@ -46,7 +71,16 @@
                 searchStr: "",
                 currentPage: 1,
                 pageSize: 10,
-                userDialog: false
+                showUserInfo: false,
+                userItem: {},
+                rules: {
+                    required: [
+                        {required: true, message: this.$t('rules.required'), trigger: 'blur'}
+                    ],
+                    maxChar: [
+                        {max: 32, message: this.$t('rules.exceedChar'[5]), trigger: 'blur'}
+                    ],
+                }
             }
         },
         computed: {
@@ -56,7 +90,6 @@
             userTableData() {
                 const searchStr = this.searchStr;
                 if (searchStr) {
-                    // this.currentPage = 1;
                     return this.userList.filter(function (item) {
                         return item.userName.indexOf(searchStr) !== -1
                             || item.name.indexOf(searchStr) !== -1;
@@ -70,6 +103,10 @@
             this.getFile()
         },
         methods: {
+            showUserDetail(item) {
+                this.userItem = JSON.parse(JSON.stringify(item));
+                this.showUserInfo = true;
+            },
             handleSizeChange(val) {
                 this.pageSize = val;
             },
@@ -139,6 +176,10 @@
             width: 100%;
             flex-grow: 1;
             flex-shrink: 1;
+
+            .el-button--text {
+                padding: 0px 16px 0px 0px;
+            }
         }
 
         > .el-pagination {
@@ -150,5 +191,9 @@
             text-align: center;
             padding: 0px;
         }
+    }
+
+    .user-info-drawer {
+        padding: 10px 30px;
     }
 </style>

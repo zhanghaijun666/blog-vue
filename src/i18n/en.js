@@ -4,6 +4,7 @@ export default {
         "nickname": "Nick",
         "email": "Email",
         "birthday": "Birthday",
+        "motto": "Motto",
         "addUser": "Add User",
         "searchUser": "Search User",
     },
@@ -21,5 +22,12 @@ export default {
         "admin": "Manage",
         "adminHome": "Manage Home",
         "userList": "Blog User",
+    },
+    "tip": {
+        "confirmDelete": "Delete ? "
+    },
+    "rules": {
+        "required": "输入不能为空",
+        "exceedChar": "输入字符不能超过{0}"
     }
 }

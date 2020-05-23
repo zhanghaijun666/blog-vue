@@ -4,9 +4,18 @@
             <div>
                 <el-avatar shape="square" :size="120" :src="circleUrl"></el-avatar>
                 <p>大自然的搬运工</p>
-                <div v-for="(item, index) in comm" :key="index">
-                    <i :class="item.icon"></i>
+                <div>
+                    <span>关注 66</span>
+                    <el-divider direction="vertical"></el-divider>
+                    <span>文章 20</span>
+                    <el-divider direction="vertical"></el-divider>
+                    <span>粉丝 88</span>
                 </div>
+                <ul>
+                    <li v-for="(item, index) in comm" :key="index">
+                        <i :class="item.icon"></i>
+                    </li>
+                </ul>
             </div>
             <div>
                 <el-menu :default-active="$route.path"
@@ -81,11 +90,23 @@
                 }
 
                 > div {
-                    float: left;
-                    width: 54px;
+                    width: 100%;
+                    text-align: center;
+                }
+
+                > ul {
+                    display: flex;
+                    flex-direction: row;
+                    padding: 0px;
                     text-align: center;
                     font-size: 18px;
-                    cursor: pointer;
+
+                    > li {
+                        display: inline-block;
+                        flex-shrink: 1;
+                        flex-grow: 1;
+                        cursor: pointer;
+                    }
                 }
             }
 
