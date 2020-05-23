@@ -11,6 +11,9 @@
 - [font-awesome](https://www.thinkcmf.com/font/font_awesome/icons.html) :图标字体库
 - [mockjs](http://mockjs.com/examples.html) :前端通过mock开发，无需等待后端接口开发好了再开发
 - [element-ui](https://element.eleme.cn/#/zh-CN/component/installation)
+- [mavon-editor](https://github.com/hinesboy/mavonEditor)
+- [vue-quill-editor](https://github.com/surmon-china/vue-quill-editor)
+- [vue-schart](https://lin-xin.gitee.io/example/schart/)
 
 
 ## 项目启动

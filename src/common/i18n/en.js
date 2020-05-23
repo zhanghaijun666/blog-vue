@@ -22,6 +22,8 @@ export default {
         "admin": "Manage",
         "adminHome": "Manage Home",
         "userList": "Blog User",
+        "vueEditor": "富文本编辑器",
+        "markdown": "markdown编辑器",
     },
     "tip": {
         "confirmDelete": "Delete ? "

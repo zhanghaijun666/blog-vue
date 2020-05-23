@@ -22,6 +22,8 @@ export default {
         "admin": "后台管理",
         "adminHome": "管理首页",
         "userList": "用户列表",
+        "vueEditor": "富文本编辑器",
+        "markdown": "markdown编辑器",
     },
     "tip": {
         "confirmDelete": "确认删除?"
