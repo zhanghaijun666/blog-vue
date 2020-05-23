@@ -3,7 +3,7 @@
 - [vue 常用知识](https://www.kancloud.cn/jackye/wendang/718665)
 - [vue](https://cn.vuejs.org/v2/guide/)
 - [Vue CLI](https://cli.vuejs.org/config/)
-- [vue-router](https://router.vuejs.org/)
+- [vue-router](https://router.vuejs.org/zh/)
 - [axios](https://www.jianshu.com/p/7a9fbcbb1114)
 - [vuex](https://vuex.vuejs.org/)
 - [less-loader](https://www.webpackjs.com/loaders/less-loader/)

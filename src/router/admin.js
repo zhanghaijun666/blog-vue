@@ -2,12 +2,12 @@ export default [
     {
         path: 'home',
         name: 'adminHome',
-        icon: "fa fa-user",
+        icon: "el-icon-s-home",
         component: () => import('@/view/admin/home'),
     }, {
         path: 'user-list',
         name: 'userList',
-        icon: "fa fa-list-alt",
+        icon: "el-icon-user-solid",
         component: () => import('@/view/admin/UserList'),
     }
 ]

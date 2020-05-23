@@ -2,21 +2,21 @@
     <div class="user-card">
         <div>
             <el-button size="small" type="primary" icon="el-icon-circle-plus-outline">{{$t('user.addUser')}}</el-button>
-            <el-button size="small" type="primary" icon="el-icon-delete" :disabled="isNotSelection"
-                       @click="deleteBatchUser()">{{$t('common.batchDelete')}}
+            <el-button size="small" type="primary" icon="el-icon-delete" @click="deleteBatchUser()">
+                {{$t('common.batchDelete')}}
             </el-button>
             <el-input size="small" v-model="searchStr" :placeholder="$t('user.searchUser')" clearable>
                 <i slot="prefix" class="el-input__icon el-icon-search"></i>
             </el-input>
         </div>
-        <el-table ref="userTable" v-loading="loading" height="100%"
+        <el-table ref="userTable" v-loading="loading" height="auto"
                   :data="userTableData.slice((currentPage-1)*pageSize,currentPage*pageSize)">
             <el-table-column type="selection"></el-table-column>
             <el-table-column prop="userName" :label="$t('user.userName')" sortable></el-table-column>
             <el-table-column prop="nickname" :label="$t('user.nickname')" sortable></el-table-column>
             <el-table-column prop="email" :label="$t('user.email')"></el-table-column>
             <el-table-column prop="birthday" :label="$t('user.birthday')"></el-table-column>
-            <el-table-column fixed="right" :label="$t('common.operate')" width="120">
+            <el-table-column :label="$t('common.operate')">
                 <template slot-scope="scope">
                     <el-button type="text" size="small" @click="showUserDetail(scope.row)">
                         {{$t('common.info')}}
@@ -80,26 +80,22 @@
                     maxChar: [
                         {max: 32, message: this.$t('rules.exceedChar'[5]), trigger: 'blur'}
                     ],
-                }
+                },
             }
         },
         computed: {
-            isNotSelection() {
-                return false;
-            },
             userTableData() {
                 const searchStr = this.searchStr;
                 if (searchStr) {
                     return this.userList.filter(function (item) {
                         return item.userName.indexOf(searchStr) !== -1
-                            || item.name.indexOf(searchStr) !== -1;
+                            || item.nickname.indexOf(searchStr) !== -1;
                     });
                 }
                 return this.userList;
             }
         },
         mounted() {
-            console.log(this.$refs.userTable.selection.length);
             this.getFile()
         },
         methods: {

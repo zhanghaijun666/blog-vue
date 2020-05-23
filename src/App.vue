@@ -11,7 +11,7 @@
         width: 100%;
         padding: 0px;
         margin: 0px;
-        font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+        font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
     }
 
     li {
@@ -20,6 +20,11 @@
 
     a {
         text-decoration: none;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
     }
 
     /*修改滚动条样式*/

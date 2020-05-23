@@ -5,10 +5,11 @@
                 <i :class="item.icon"></i>
                 <span slot="title">{{$t('router.'+item.name)}}</span>
             </template>
-            <el-menu-item-group>
-                <sidebar-item v-for="(route,index) in item.children" :key="index" :item="route"
-                              :basePath="resolvePath(item.path)"></sidebar-item>
-            </el-menu-item-group>
+            <sidebar-item v-for="(route,index) in item.children"
+                          :key="index"
+                          :item="route"
+                          :basePath="resolvePath(item.path)">
+            </sidebar-item>
         </el-submenu>
         <el-menu-item v-else :index="resolvePath(item.path)">
             <i :class="item.icon"></i>
@@ -41,17 +42,3 @@
         }
     }
 </script>
-<style lang="less" scoped>
-    .el-menu-item {
-        color: inherit;
-
-        &:focus, &:hover {
-            background-color: #001528;
-        }
-
-        > span {
-            display: inline-block;
-            margin: 0px 16px;
-        }
-    }
-</style>
