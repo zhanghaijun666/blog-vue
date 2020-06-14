@@ -2,6 +2,8 @@
     <div class="layout-file">
         <div>
             <div>
+                <i class="el-icon-refresh"></i>
+                <el-divider direction="vertical"></el-divider>
                 <span>返回到上一级</span>
                 <el-divider direction="vertical"></el-divider>
                 <span>文档管理</span>
@@ -46,17 +48,11 @@
 <script>
     export default {
         data() {
-            const fileData = {
-                name: "备忘.txt",
-                size: "600MB",
-                createAt: "晨瑾旺旺",
-                updateTime: "2020-01-01 12:00:00"
-            };
             return {
                 loading: false,
                 currentPage: 1,
                 pageSize: 10,
-                fileList: new Array(66).fill(fileData)
+                fileList: []
             }
         }, mounted() {
             this.getFile()
@@ -68,9 +64,14 @@
                 this.currentPage = val;
             },
             getFile: function () {
+                this.loading = true;
                 this.$axios.getBinary('/api/file', {cmd: "GET"})
                     .then(res => {
-                        console.log(res)
+                        this.fileList = res;
+                        this.loading = false;
+                    })
+                    .catch(() => {
+                        this.loading = false;
                     })
             }
         }

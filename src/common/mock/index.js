@@ -17,5 +17,15 @@ for (let i = 0; i < 56; i++) {
     })
 }
 Mock.mock('/api/user/all', "get", userList);
-Mock.mock('/api/file', "get", userList);
+let fileList = [];
+for (let i = 0; i < 66; i++) {
+    fileList.push({
+        id: Random.id(),
+        name: Random.ctitle(3, 8),
+        size: '20MB',
+        createAt: Random.cname(),
+        updateTime: Random.time('yyyy-MM-dd HH:mm:ss')
+    })
+}
+Mock.mock('/api/file', "get", fileList);
 
