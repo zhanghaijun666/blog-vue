@@ -10,27 +10,6 @@ export default [
         icon: "el-icon-user-solid",
         component: () => import('@/view/admin/UserList'),
     }, {
-        path: "plugin",
-        name: "userList",
-        icon: "el-icon-platform-eleme",
-        redirect: 'plugin/vue-editor',
-        component: {
-            template: `<router-view></router-view>`
-        },
-        children: [
-            {
-                path: 'vue-editor',
-                name: 'vueEditor',
-                icon: "el-icon-s-flag",
-                component: () => import('@/view/visitor/VueEditor'),
-            }, {
-                path: 'markdown',
-                name: 'markdown',
-                icon: "el-icon-s-check",
-                component: () => import('@/view/visitor/Markdown'),
-            }
-        ]
-    }, {
         path: 'vue-editor',
         name: 'vueEditor',
         icon: "el-icon-s-goods",

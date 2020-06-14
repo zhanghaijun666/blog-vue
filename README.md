@@ -14,6 +14,7 @@
 - [mavon-editor](https://github.com/hinesboy/mavonEditor)
 - [vue-quill-editor](https://github.com/surmon-china/vue-quill-editor)
 - [vue-schart](https://lin-xin.gitee.io/example/schart/)
+- [VuePress](https://www.vuepress.cn/guide/)
 
 
 ## 项目启动
