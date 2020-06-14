@@ -14,42 +14,56 @@
                 <el-button size="mini" icon="el-icon-download">下载</el-button>
             </div>
         </div>
-        <div class="file-card">
-            <div class="card-header">
-                <el-col :span="16"><span>文件名</span></el-col>
-                <el-col :span="2"><span>大小</span></el-col>
-                <el-col :span="2"><span>创建者</span></el-col>
-                <el-col :span="4"><span>修改日期</span></el-col>
-            </div>
-            <div class="card-body">
-                <el-col :span="16"><span>备忘.txt</span></el-col>
-                <el-col :span="2"><span>600MB</span></el-col>
-                <el-col :span="2"><span>晨瑾旺旺</span></el-col>
-                <el-col :span="4"><span>2022-01-01 12:00:22</span></el-col>
-            </div>
-            <div class="card-footer">
-
-            </div>
-        </div>
+        <el-table height="auto" v-loading="loading"
+                  :data="fileList.slice((currentPage-1)*pageSize,currentPage*pageSize)">
+            <el-table-column type="selection" width="55"></el-table-column>
+            <el-table-column sortable prop="name" label="文件名">
+                <template slot-scope="scope">
+                    <span class="cell"> {{ scope.row.name }}</span>
+                    <el-button size="mini" type="text" icon="el-icon-delete">删除</el-button>
+                    <el-button size="mini" type="text" icon="el-icon-download">下载</el-button>
+                </template>
+            </el-table-column>
+            <el-table-column width="100" sortable prop="size" label="大小"></el-table-column>
+            <el-table-column width="100" sortable prop="createAt" label="创建者"></el-table-column>
+            <el-table-column width="150" sortable prop="updateTime" label="创建时间"></el-table-column>
+        </el-table>
+        <el-pagination
+                @size-change="handleSizeChange"
+                @current-change="handleCurrentChange"
+                :current-page="currentPage"
+                :page-sizes="[5,10, 20, 50, 100]"
+                :page-size="pageSize"
+                layout="prev, pager, next, jumper,total, sizes"
+                :total="fileList.length" background>
+        </el-pagination>
     </div>
 </template>
 
 <script>
     export default {
         data() {
+            const fileData = {
+                name: "备忘.txt",
+                size: "600MB",
+                createAt: "晨瑾旺旺",
+                updateTime: "2020-01-01 12:00:00"
+            };
             return {
-                fileList:[
-                    {
-                        filenam:"备忘.txt",
-                        size: "600MB",
-                        createAt: "晨瑾旺旺",
-                        updateTime: "2020-01-01 12:00:00"
-                    }
-                ]
+                loading: false,
+                currentPage: 1,
+                pageSize: 10,
+                fileList: new Array(66).fill(fileData)
             }
         }, mounted() {
             this.getFile()
         }, methods: {
+            handleSizeChange(val) {
+                this.pageSize = val;
+            },
+            handleCurrentChange(val) {
+                this.currentPage = val;
+            },
             getFile: function () {
                 this.$axios.getBinary('/api/file', {cmd: "GET"})
                     .then(res => {
@@ -66,7 +80,8 @@
         display: flex;
         flex-direction: column;
         background-color: #ffffff;
-        > div:first-child {
+
+        > *:nth-child(1) {
             height: 30px;
             line-height: 30px;
             flex-grow: 0;
@@ -74,19 +89,41 @@
             display: flex;
             flex-direction: row;
             border-bottom: 1px solid #fbc4c4;
-            >div:first-child{
+
+            > div:first-child {
                 flex-grow: 1;
                 flex-shrink: 1;
             }
-            >div:last-child{
+
+            > div:last-child {
                 flex-grow: 0;
                 flex-shrink: 0;
                 width: 360px;
             }
         }
-        >div:last-child{
+
+        > *:nth-child(2) {
             flex-grow: 1;
             flex-shrink: 1;
+            overflow: hidden;
+
+            .el-table__row .el-button {
+                float: right;
+                margin-left: 10px;
+                display: none;
+            }
+
+            .el-table__row:hover .el-button {
+                display: inline-block;
+            }
+        }
+
+        > *:nth-child(3) {
+            flex-grow: 0;
+            flex-shrink: 0;
+            height: 30px;
+            line-height: 30px;
+            text-align: right;
         }
     }
 </style>

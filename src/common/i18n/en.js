@@ -16,8 +16,8 @@ export default {
     },
     "router": {
         "myBlog": "Blog",
-        "userHome": "User Home",
-        "userFile": "User File",
+        "userHome": "Home",
+        "userFile": "Files",
         "chat": "Chat",
         "admin": "Manage",
         "adminHome": "Manage Home",

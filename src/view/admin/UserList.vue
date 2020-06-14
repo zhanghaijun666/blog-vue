@@ -34,7 +34,7 @@
                 :hide-on-single-page="false"
                 :page-sizes="[5, 10, 20, 50]"
                 :page-size="pageSize"
-                layout="total, sizes, prev, pager, next, jumper"
+                layout="prev, pager, next, jumper,total, sizes"
                 :current-page="currentPage"
                 :total="userTableData.length">
         </el-pagination>
@@ -184,7 +184,7 @@
             width: 100%;
             height: 30px;
             line-height: 30px;
-            text-align: center;
+            text-align: right;
             padding: 0px;
         }
     }

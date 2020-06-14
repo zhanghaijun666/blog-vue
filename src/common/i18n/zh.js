@@ -17,7 +17,7 @@ export default {
     "router": {
         "myBlog": "我的博客",
         "userHome": "我的首页",
-        "userFile": "文件存储",
+        "userFile": "文档管理",
         "chat": "消息聊天",
         "admin": "后台管理",
         "adminHome": "管理首页",
