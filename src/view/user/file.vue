@@ -16,11 +16,14 @@
         </div>
         <el-table height="auto" v-loading="loading"
                   :data="fileList.slice((currentPage-1)*pageSize,currentPage*pageSize)">
-            <el-table-column type="selection" width="55"></el-table-column>
+            <el-table-column type="selection" width="50"></el-table-column>
             <el-table-column sortable prop="name" label="文件名">
                 <template slot-scope="scope">
-                    <span class="cell"> {{ scope.row.name }}</span>
-                    <el-button size="mini" type="text" icon="el-icon-delete">删除</el-button>
+                    <img src="../../assets/images/file/folder.png" width="30px" height="30px">
+                    <span class=""> {{ scope.row.name }}</span>
+                    <el-popconfirm title="这是一段内容确定删除吗？">
+                        <el-button size="mini" type="text" icon="el-icon-delete" slot="reference">删除</el-button>
+                    </el-popconfirm>
                     <el-button size="mini" type="text" icon="el-icon-download">下载</el-button>
                 </template>
             </el-table-column>
